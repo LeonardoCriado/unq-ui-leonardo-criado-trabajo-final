@@ -9,6 +9,12 @@ export function WordForm() {
     inputRef.current?.focus()
   }, [state.status])
 
+  useEffect(() => {
+    if (state.feedback.type !== 'info') {
+      inputRef.current?.focus()
+    }
+  }, [state.feedback])
+
   function handleSubmit(event) {
     event.preventDefault()
     submitWord(state.inputValue)

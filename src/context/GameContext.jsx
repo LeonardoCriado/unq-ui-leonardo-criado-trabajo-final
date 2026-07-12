@@ -76,6 +76,7 @@ function reducer(state, action) {
       return {
         ...state,
         loading: false,
+        inputValue: '',
         feedback: buildFeedback('error', action.payload),
       }
     case 'TICK':
