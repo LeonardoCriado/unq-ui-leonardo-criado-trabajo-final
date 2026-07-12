@@ -1,16 +1,43 @@
-# React + Vite
+# Palabras Encadenadas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Juego de palabras encadenadas hecho en React para el TFI de UI.
 
-Currently, two official plugins are available:
+## Requisitos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Node.js 18 o superior
+- npm
 
-## React Compiler
+## Instalación
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+```
 
-## Expanding the ESLint configuration
+## Ejecución local
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm run dev
+```
+
+Abrí la URL que muestra Vite en la terminal, normalmente `http://localhost:5173`.
+
+## Validaciones disponibles
+
+```bash
+npm run lint
+npm run build
+```
+
+## Cómo jugar
+
+1. Ingresá una primera palabra válida.
+2. La siguiente palabra debe comenzar con la última letra de la anterior.
+3. No podés repetir palabras.
+4. Cada palabra válida suma puntos según su cantidad de letras.
+5. Si el tiempo llega a cero, la partida termina.
+
+## API utilizada
+
+La validación de diccionario se realiza con la API de la cátedra:
+
+`https://word-api-hmlg.vercel.app/api/validate?word=...`
