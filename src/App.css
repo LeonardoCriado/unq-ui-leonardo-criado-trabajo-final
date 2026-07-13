@@ -12,6 +12,105 @@
   margin-bottom: 24px;
 }
 
+.game-header-copy {
+  display: grid;
+  gap: 6px;
+}
+
+.theme-switcher {
+  position: relative;
+  align-self: start;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 168px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+  color: var(--text);
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+}
+
+.theme-toggle:focus-visible,
+.theme-option:focus-visible {
+  outline: 3px solid var(--accent-soft);
+  outline-offset: 2px;
+}
+
+.theme-toggle-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+
+.theme-toggle strong {
+  font-size: 1rem;
+  line-height: 1.1;
+}
+
+.theme-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  z-index: 10;
+  display: grid;
+  gap: 8px;
+  min-width: 220px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface-strong);
+  box-shadow: var(--shadow-soft);
+}
+
+.theme-option {
+  display: grid;
+  gap: 2px;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  background: transparent;
+  color: var(--text);
+  padding: 0.8rem 0.9rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.theme-option span {
+  font-weight: 700;
+}
+
+.theme-option small {
+  color: var(--muted);
+}
+
+.theme-option.is-active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.theme-switcher.is-mobile-floating {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 40;
+}
+
 .eyebrow {
   margin: 0 0 8px;
   text-transform: uppercase;
@@ -132,6 +231,8 @@
   height: 52px;
   padding: 0;
   flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .word-input {
@@ -234,6 +335,30 @@
   background: rgba(255, 255, 255, 0.04);
 }
 
+.leaderboard-rank {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.leaderboard-medal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.leaderboard-position {
+  font-weight: 700;
+}
+
+.leaderboard-score {
+  color: var(--muted);
+}
+
 .word-text {
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -273,13 +398,42 @@
 
   .game-header {
     align-items: start;
+    gap: 16px;
+  }
+
+  .theme-switcher {
+    justify-self: start;
   }
 }
 
 @media (max-width: 640px) {
   .app-shell {
     width: min(100%, calc(100% - 20px));
-    padding: 18px 0 28px;
+    padding: 54px 0 28px;
+  }
+
+  .game-header-copy {
+    width: 100%;
+    max-width: none;
+    padding-right: 0;
+  }
+
+  .game-header {
+    align-items: start;
+    gap: 12px;
+  }
+
+  .theme-switcher {
+    justify-self: end;
+  }
+
+  .theme-switcher.is-mobile-floating {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    left: auto;
+    width: auto;
+    max-width: calc(100vw - 24px);
   }
 
   .stats-grid {
@@ -305,5 +459,31 @@
 
   .stat-value {
     font-size: 1.6rem;
+  }
+
+  .theme-toggle {
+    min-width: 112px;
+    padding: 0.48rem 0.72rem;
+    gap: 1px;
+  }
+
+  .theme-toggle-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+  }
+
+  .theme-toggle strong {
+    font-size: 0.88rem;
+  }
+
+  .theme-menu {
+    position: absolute;
+    right: 0;
+    left: auto;
+    top: calc(100% + 8px);
+    width: min(260px, calc(100vw - 24px));
+    min-width: 0;
+    max-height: min(55vh, 320px);
+    overflow: auto;
   }
 }

@@ -1,3 +1,4 @@
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { GameHeader } from './components/GameHeader'
 import { GameMessage } from './components/GameMessage'
 import { GameStats } from './components/GameStats'
@@ -6,14 +7,24 @@ import { RulesPanel } from './components/RulesPanel'
 import { WordChain } from './components/WordChain'
 import { WordForm } from './components/WordForm'
 import { useGame } from './hooks/useGame'
+import { loadTheme, saveTheme } from './game/theme'
 import './App.css'
 
 function App() {
   const { state } = useGame()
+  const [theme, setTheme] = useState(() => loadTheme())
+
+  useLayoutEffect(() => {
+    document.documentElement.dataset.theme = theme
+  }, [theme])
+
+  useEffect(() => {
+    saveTheme(theme)
+  }, [theme])
 
   return (
     <main className="app-shell">
-      <GameHeader />
+      <GameHeader activeTheme={theme} onThemeChange={setTheme} />
 
       <section className="game-layout">
         <div className="game-column">
