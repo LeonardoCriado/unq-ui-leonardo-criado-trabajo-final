@@ -1,6 +1,5 @@
 import { GameHeader } from './components/GameHeader'
 import { GameMessage } from './components/GameMessage'
-import { GameOverPanel } from './components/GameOverPanel'
 import { GameStats } from './components/GameStats'
 import { Leaderboard } from './components/Leaderboard'
 import { RulesPanel } from './components/RulesPanel'

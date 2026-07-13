@@ -15,9 +15,16 @@ export function WordForm() {
     }
   }, [state.feedback])
 
+  const isGameOver = state.status === 'game-over'
+
   function handleSubmit(event) {
     event.preventDefault()
     submitWord(state.inputValue)
+  }
+
+  function handleReset() {
+    resetGame()
+    inputRef.current?.focus()
   }
 
   return (
@@ -33,14 +40,55 @@ export function WordForm() {
             placeholder="Ejemplo: casa"
             autoComplete="off"
             spellCheck="false"
-            disabled={state.status === 'game-over' || state.loading}
+            disabled={isGameOver || state.loading}
           />
-          <button className="primary-button" type="submit" disabled={state.loading}>
-            {state.loading ? 'Validando...' : 'Jugar'}
-          </button>
-          <button className="secondary-button" type="button" onClick={resetGame}>
-            Reiniciar
-          </button>
+          {isGameOver ? (
+            <button
+              className="primary-button icon-button"
+              type="button"
+              onClick={handleReset}
+              aria-label="Reiniciar partida"
+              title="Reiniciar"
+            >
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 12a8 8 0 1 0 2.5-5.8"
+                />
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3 4v4h4"
+                />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="primary-button icon-button"
+              type="submit"
+              disabled={state.loading}
+              aria-label="Enviar palabra"
+              title="Jugar"
+            >
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5 12h14M13 6l6 6-6 6"
+                />
+              </svg>
+            </button>
+          )}
         </div>
       </form>
     </section>

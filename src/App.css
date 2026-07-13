@@ -67,15 +67,21 @@
   display: grid;
   gap: 6px;
   min-height: 96px;
+  align-content: space-between;
+  justify-items: center;
+  text-align: center;
 }
 
 .stat-label {
   font-size: 0.82rem;
   color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .stat-value {
-  font-size: 1.45rem;
+  font-size: 2.4rem;
   line-height: 1;
   color: var(--text);
 }
@@ -101,8 +107,18 @@
 
 .field-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 10px;
+}
+
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  flex-shrink: 0;
 }
 
 .word-input {
@@ -236,17 +252,6 @@
   font-size: 0.95rem;
 }
 
-.game-over-panel {
-  display: grid;
-  gap: 10px;
-  border-color: rgba(239, 68, 68, 0.28);
-}
-
-.game-over-panel h2 {
-  margin: 0;
-  font-size: 1.4rem;
-}
-
 .rules-list {
   margin: 0;
   padding-left: 1.2rem;
@@ -294,14 +299,6 @@
   .game-header {
     align-items: start;
   }
-
-  .stats-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .field-row {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 640px) {
@@ -311,12 +308,27 @@
   }
 
   .stats-grid {
-    grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   .panel,
   .stat-card,
   .message {
     border-radius: 20px;
+  }
+
+  .stat-card {
+    padding: 10px 8px;
+    min-height: 72px;
+    gap: 2px;
+  }
+
+  .stat-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+  }
+
+  .stat-value {
+    font-size: 1.6rem;
   }
 }

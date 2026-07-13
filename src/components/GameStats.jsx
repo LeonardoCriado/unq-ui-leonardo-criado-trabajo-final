@@ -17,7 +17,7 @@ export function GameStats({ score, wordsCount, remainingSeconds, status }) {
       <article className="stat-card">
         <span className="stat-label">Tiempo</span>
         <strong className={timerClassName}>
-          {remainingSeconds}s / {TURN_SECONDS}s
+          {remainingSeconds}s
         </strong>
       </article>
     </section>
