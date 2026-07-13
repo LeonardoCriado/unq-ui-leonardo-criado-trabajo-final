@@ -23,9 +23,6 @@ export function WordForm() {
   return (
     <section className="panel">
       <form className="word-form" onSubmit={handleSubmit}>
-        <label className="field-label" htmlFor="word-input">
-          Ingresar palabra
-        </label>
         <div className="field-row">
           <input
             ref={inputRef}

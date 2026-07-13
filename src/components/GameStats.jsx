@@ -20,10 +20,6 @@ export function GameStats({ score, wordsCount, remainingSeconds, status }) {
           {remainingSeconds}s / {TURN_SECONDS}s
         </strong>
       </article>
-      <article className="stat-card">
-        <span className="stat-label">Estado</span>
-        <strong className="stat-value">{status}</strong>
-      </article>
     </section>
   )
 }

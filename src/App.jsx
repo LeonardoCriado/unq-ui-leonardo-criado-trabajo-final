@@ -27,31 +27,17 @@ function App() {
             remainingSeconds={state.remainingSeconds}
             status={state.status}
           />
-
-          <RulesPanel />
+          
+          <GameMessage type={state.feedback.type} text={state.feedback.text} />
 
           <WordForm />
 
-          {expectedLetter ? (
-            <section className="panel hint-panel" aria-label="Siguiente letra esperada">
-              <p className="hint-label">Siguiente palabra</p>
-              <strong className="hint-letter">Debe empezar con {expectedLetter}</strong>
-            </section>
-          ) : null}
+          <WordChain words={state.words} />
 
-          <GameMessage type={state.feedback.type} text={state.feedback.text} />
-
-          {state.status === 'game-over' ? (
-            <GameOverPanel
-              score={state.score}
-              wordsCount={state.words.length}
-              onRestart={resetGame}
-            />
-          ) : null}
         </div>
 
         <div className="game-column">
-          <WordChain words={state.words} />
+          <RulesPanel />
           <Leaderboard entries={state.leaderboard} />
         </div>
       </section>
