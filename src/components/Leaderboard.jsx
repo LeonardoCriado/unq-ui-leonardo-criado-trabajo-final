@@ -10,8 +10,7 @@ export function Leaderboard({ entries }) {
   return (
     <section className="panel leaderboard-panel" aria-label="Leaderboard local">
       <div className="section-header">
-        <h2>Top 10 local</h2>
-        <span>{entries.length} partidas</span>
+        <h2>Top 10</h2>
       </div>
 
       {entries.length === 0 ? (
