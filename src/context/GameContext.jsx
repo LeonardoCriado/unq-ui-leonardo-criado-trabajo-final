@@ -76,6 +76,7 @@ function reducer(state, action) {
       return {
         ...state,
         loading: false,
+        inputValue: '',
         feedback: buildFeedback('error', action.payload),
       }
     case 'TICK':
@@ -218,7 +219,6 @@ export function GameProvider({ children }) {
     }
 
     dispatch({ type: 'SET_LOADING', payload: true })
-    dispatch({ type: 'SET_FEEDBACK', payload: buildFeedback('info', 'Validando palabra...') })
 
     try {
       const validation = await validateWord(trimmedInput.toLowerCase())
