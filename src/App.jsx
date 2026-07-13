@@ -3,16 +3,13 @@ import { GameMessage } from './components/GameMessage'
 import { GameStats } from './components/GameStats'
 import { Leaderboard } from './components/Leaderboard'
 import { RulesPanel } from './components/RulesPanel'
-import { getExpectedLetter } from './game/wordRules'
 import { WordChain } from './components/WordChain'
 import { WordForm } from './components/WordForm'
 import { useGame } from './hooks/useGame'
 import './App.css'
 
 function App() {
-  const { state, resetGame } = useGame()
-  const lastWord = state.words.at(-1)
-  const expectedLetter = lastWord ? getExpectedLetter(lastWord.normalized) : null
+  const { state } = useGame()
 
   return (
     <main className="app-shell">
@@ -26,13 +23,12 @@ function App() {
             remainingSeconds={state.remainingSeconds}
             status={state.status}
           />
-          
+
           <GameMessage type={state.feedback.type} text={state.feedback.text} />
 
           <WordForm />
 
           <WordChain words={state.words} />
-
         </div>
 
         <div className="game-column">
