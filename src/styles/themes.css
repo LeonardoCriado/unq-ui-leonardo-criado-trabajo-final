@@ -21,6 +21,7 @@ html[data-theme='classic'] {
   --info-soft: rgba(147, 197, 253, 0.14);
   --shadow-soft: 0 22px 50px rgba(2, 6, 23, 0.35);
   --radius-lg: 24px;
+  --radius-button: 50%;
 }
 
 html[data-theme='matrix-terminal'] {
@@ -44,7 +45,8 @@ html[data-theme='matrix-terminal'] {
   --info: #9ef7b7;
   --info-soft: rgba(158, 247, 183, 0.12);
   --shadow-soft: 0 0 0 1px rgba(57, 255, 20, 0.28);
-  --radius-lg: 12px;
+  --radius-lg: 0;
+  --radius-button: 0;
 }
 
 html[data-theme='duolingo'] {
@@ -141,44 +143,4 @@ html[data-theme='nintendo'] {
   --info-soft: rgba(37, 99, 235, 0.14);
   --shadow-soft: 0 10px 0 rgba(27, 31, 59, 0.14);
   --radius-lg: 22px;
-}
-
-html[data-theme='matrix-terminal'] body::before {
-  background-image:
-    linear-gradient(rgba(57, 255, 20, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(57, 255, 20, 0.08) 1px, transparent 1px);
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.35), transparent 88%);
-  opacity: 0.7;
-}
-
-html[data-theme='duolingo'] body::before {
-  background-image:
-    linear-gradient(rgba(88, 204, 2, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(88, 204, 2, 0.06) 1px, transparent 1px);
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.22), transparent 86%);
-  opacity: 0.6;
-}
-
-html[data-theme='cyberpunk'] body::before {
-  background-image:
-    linear-gradient(rgba(255, 61, 242, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(76, 201, 240, 0.07) 1px, transparent 1px);
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.35), transparent 88%);
-  opacity: 0.75;
-}
-
-html[data-theme='arcade-modern'] body::before {
-  background-image:
-    linear-gradient(rgba(255, 210, 63, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(76, 201, 240, 0.06) 1px, transparent 1px);
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.28), transparent 88%);
-  opacity: 0.7;
-}
-
-html[data-theme='nintendo'] body::before {
-  background-image:
-    linear-gradient(rgba(27, 31, 59, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(27, 31, 59, 0.05) 1px, transparent 1px);
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.35), transparent 88%);
-  opacity: 0.5;
 }
