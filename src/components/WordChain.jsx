@@ -10,8 +10,11 @@ export function WordChain({ words }) {
         <p className="empty-state">Todavía no hay palabras válidas.</p>
       ) : (
         <ol className="word-list">
-          {words.map((word, index) => (
-            <li key={`${word.original}-${index}`} className="word-item">
+          {[...words].reverse().map((word, index) => (
+            <li
+              key={`${word.original}-${index}`}
+              className={`word-item${index === 0 ? ' is-slide-in' : ''}`}
+            >
               <span className="word-text">{word.original}</span>
               <span className="word-points">{word.points} puntos</span>
             </li>

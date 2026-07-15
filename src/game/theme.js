@@ -2,6 +2,11 @@ const STORAGE_KEY = 'word-chain-theme-v1'
 
 export const THEMES = [
   {
+    id: 'arcade-modern',
+    name: 'Arcade moderno',
+    description: 'Vintage brillante y limpio',
+  },
+  {
     id: 'cyberpunk',
     name: 'Cyberpunk',
     description: 'Neón, violeta y contraste alto',
@@ -10,11 +15,6 @@ export const THEMES = [
     id: 'matrix-terminal',
     name: 'Matrix terminal',
     description: 'Fondo negro y verde intenso',
-  },
-  {
-    id: 'arcade-modern',
-    name: 'Arcade moderno',
-    description: 'Vintage brillante y limpio',
   },
   {
     id: 'classic',

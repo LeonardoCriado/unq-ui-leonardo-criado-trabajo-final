@@ -1,9 +1,10 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useGame } from '../hooks/useGame'
 
 export function WordForm() {
   const { state, setInputValue, submitWord, resetGame } = useGame()
   const inputRef = useRef(null)
+  const [animClass, setAnimClass] = useState('')
 
   useEffect(() => {
     inputRef.current?.focus()
@@ -14,6 +15,24 @@ export function WordForm() {
       inputRef.current?.focus()
     }
   }, [state.feedback])
+
+  useEffect(() => {
+    if (state.feedback.type === 'success') {
+      setAnimClass('is-pop is-glow-success')
+    } else if (state.feedback.type === 'error') {
+      setAnimClass('is-shake is-flash-error')
+    } else {
+      setAnimClass('')
+    }
+  }, [state.feedback])
+
+  useEffect(() => {
+    setAnimClass('')
+  }, [state.status])
+
+  function handleAnimationEnd() {
+    setAnimClass('')
+  }
 
   const isGameOver = state.status === 'game-over'
 
@@ -34,13 +53,14 @@ export function WordForm() {
           <input
             ref={inputRef}
             id="word-input"
-            className="word-input"
+            className={`word-input ${animClass}`}
             value={state.inputValue}
             onChange={(event) => setInputValue(event.target.value)}
             placeholder="Ejemplo: casa"
             autoComplete="off"
             spellCheck="false"
             disabled={isGameOver || state.loading}
+            onAnimationEnd={handleAnimationEnd}
           />
           {isGameOver ? (
             <button
