@@ -2,9 +2,9 @@ const STORAGE_KEY = 'word-chain-theme-v1'
 
 export const THEMES = [
   {
-    id: 'classic',
-    name: 'Clásico',
-    description: 'Paleta original del juego',
+    id: 'cyberpunk',
+    name: 'Cyberpunk',
+    description: 'Neón, violeta y contraste alto',
   },
   {
     id: 'matrix-terminal',
@@ -12,24 +12,24 @@ export const THEMES = [
     description: 'Fondo negro y verde intenso',
   },
   {
+    id: 'arcade-modern',
+    name: 'Arcade moderno',
+    description: 'Vintage brillante y limpio',
+  },
+  {
+    id: 'classic',
+    name: 'Clásico',
+    description: 'Paleta original del juego',
+  },
+  {
     id: 'duolingo',
     name: 'Duolingo',
     description: 'Verde vivo y contraste amable',
   },
   {
-    id: 'cyberpunk',
-    name: 'Cyberpunk',
-    description: 'Neón, violeta y contraste alto',
-  },
-  {
     id: 'nintendo',
     name: 'Nintendo',
     description: 'Más lúdico y colorido',
-  },
-  {
-    id: 'arcade-modern',
-    name: 'Arcade moderno',
-    description: 'Vintage brillante y limpio',
   },
 ]
 
