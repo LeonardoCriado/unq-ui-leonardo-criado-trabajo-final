@@ -35,6 +35,7 @@ const initialState = {
   },
   loading: false,
   leaderboard: [],
+  isPodium: false,
 }
 
 function reducer(state, action) {
@@ -90,12 +91,17 @@ function reducer(state, action) {
         status: 'game-over',
         loading: false,
         remainingSeconds: 0,
-        feedback: buildFeedback('error', action.payload),
+        feedback: buildFeedback('info', action.payload),
       }
     case 'SET_LEADERBOARD':
       return {
         ...state,
         leaderboard: action.payload,
+      }
+    case 'SET_IS_PODIUM':
+      return {
+        ...state,
+        isPodium: action.payload,
       }
     case 'RESET_GAME':
       return {
@@ -150,14 +156,18 @@ export function GameProvider({ children }) {
       return
     }
 
-    const nextLeaderboard = mergeLeaderboard(
-      state.leaderboard,
-      createLeaderboardEntry(state.score, state.words.length),
+    const newEntry = createLeaderboardEntry(state.score, state.words.length)
+    const nextLeaderboard = mergeLeaderboard(state.leaderboard, newEntry)
+
+    const podiumIndex = nextLeaderboard.findIndex(
+      (entry) => entry.id === newEntry.id,
     )
+    const isPodium = podiumIndex >= 0 && podiumIndex < 3
 
     gameOverSavedRef.current = true
     saveLeaderboard(nextLeaderboard)
     dispatch({ type: 'SET_LEADERBOARD', payload: nextLeaderboard })
+    dispatch({ type: 'SET_IS_PODIUM', payload: isPodium })
   }, [state.leaderboard, state.score, state.status, state.words.length])
 
   async function submitWord(rawInput) {

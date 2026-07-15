@@ -23,7 +23,6 @@ export function Leaderboard({ entries }) {
                 <span className="leaderboard-medal" aria-hidden="true">
                   {getMedal(index)}
                 </span>
-                <span className="leaderboard-position">{index + 1}</span>
                 <span className="leaderboard-score">{entry.score} pts</span>
               </span>
               <span>{entry.wordsCount} palabras</span>

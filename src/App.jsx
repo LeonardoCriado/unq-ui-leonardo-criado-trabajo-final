@@ -6,6 +6,7 @@ import { Leaderboard } from './components/Leaderboard'
 import { RulesPanel } from './components/RulesPanel'
 import { WordChain } from './components/WordChain'
 import { WordForm } from './components/WordForm'
+import { Confetti } from './components/Confetti'
 import { useGame } from './hooks/useGame'
 import { loadTheme, saveTheme } from './game/theme'
 import './App.css'
@@ -13,6 +14,7 @@ import './App.css'
 function App() {
   const { state } = useGame()
   const [theme, setTheme] = useState(() => loadTheme())
+  const [screenShake, setScreenShake] = useState(false)
 
   useLayoutEffect(() => {
     document.documentElement.dataset.theme = theme
@@ -22,8 +24,27 @@ function App() {
     saveTheme(theme)
   }, [theme])
 
+  useEffect(() => {
+    if (state.feedback.type === 'error') {
+      setScreenShake(true)
+    }
+  }, [state.feedback])
+
+  useEffect(() => {
+    setScreenShake(false)
+  }, [state.status])
+
+  function handleScreenShakeEnd() {
+    setScreenShake(false)
+  }
+
   return (
-    <main className="app-shell">
+    <main
+      className={`app-shell${screenShake ? ' is-screen-shake' : ''}`}
+      onAnimationEnd={handleScreenShakeEnd}
+    >
+      {state.isPodium && state.status === 'game-over' && <Confetti />}
+
       <GameHeader activeTheme={theme} onThemeChange={setTheme} />
 
       <section className="game-layout">
