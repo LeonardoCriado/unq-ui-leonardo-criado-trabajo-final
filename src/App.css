@@ -595,13 +595,13 @@
   }
 }
 
-@keyframes confetti-fall {
+@keyframes confetti-burst {
   0% {
-    transform: translateY(-10px) rotate(0deg);
+    transform: translate(0, 0) rotate(0deg) scale(0.5);
     opacity: 1;
   }
   100% {
-    transform: translateY(100px) rotate(720deg);
+    transform: translate(var(--burst-x), var(--burst-y)) rotate(var(--burst-r)) scale(1);
     opacity: 0;
   }
 }
@@ -642,68 +642,208 @@
 /* Confetti */
 .confetti-container {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   pointer-events: none;
-  z-index: 100;
+  z-index: 9999;
   overflow: hidden;
 }
 
 .confetti-piece {
   position: absolute;
-  top: -10px;
-  width: 10px;
-  height: 10px;
+  bottom: 0;
+  width: 12px;
+  height: 12px;
   border-radius: 2px;
-  animation: confetti-fall 1.5s ease-in forwards;
+  opacity: 0;
+  animation: confetti-burst 1.2s ease-out forwards;
 }
 
+/* Bottom-left burst pieces */
 .confetti-piece:nth-child(1) {
-  left: 10%;
-  background: var(--accent);
+  left: 5%;
+  --burst-x: -80px;
+  --burst-y: -320px;
+  --burst-r: 540deg;
+  background: #ff6b6b;
   animation-delay: 0s;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
 }
 
 .confetti-piece:nth-child(2) {
-  left: 25%;
-  background: var(--danger);
-  animation-delay: 0.1s;
+  left: 8%;
+  --burst-x: 40px;
+  --burst-y: -280px;
+  --burst-r: 420deg;
+  background: #feca57;
+  animation-delay: 0.08s;
+  width: 10px;
+  height: 10px;
 }
 
 .confetti-piece:nth-child(3) {
-  left: 40%;
-  background: #f1c40f;
-  animation-delay: 0.2s;
+  left: 2%;
+  --burst-x: -120px;
+  --burst-y: -200px;
+  --burst-r: 360deg;
+  background: #48dbfb;
+  animation-delay: 0.15s;
+  width: 16px;
+  height: 8px;
+  border-radius: 4px;
 }
 
 .confetti-piece:nth-child(4) {
-  left: 55%;
-  background: var(--accent-strong);
-  animation-delay: 0.15s;
+  left: 12%;
+  --burst-x: 80px;
+  --burst-y: -350px;
+  --burst-r: 600deg;
+  background: #ff9ff3;
+  animation-delay: 0.05s;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
 }
 
 .confetti-piece:nth-child(5) {
-  left: 70%;
-  background: #e67e22;
-  animation-delay: 0.3s;
+  left: 0%;
+  --burst-x: -60px;
+  --burst-y: -250px;
+  --burst-r: 480deg;
+  background: #54a0ff;
+  animation-delay: 0.2s;
+  width: 8px;
+  height: 14px;
+  border-radius: 3px;
 }
 
 .confetti-piece:nth-child(6) {
-  left: 85%;
-  background: var(--info);
-  animation-delay: 0.05s;
+  left: 15%;
+  --burst-x: 100px;
+  --burst-y: -180px;
+  --burst-r: 300deg;
+  background: #5f27cd;
+  animation-delay: 0.12s;
+  width: 14px;
+  height: 10px;
 }
 
 .confetti-piece:nth-child(7) {
-  left: 50%;
-  background: #9b59b6;
+  left: 6%;
+  --burst-x: -40px;
+  --burst-y: -380px;
+  --burst-r: 720deg;
+  background: #01a3a4;
   animation-delay: 0.25s;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
 }
 
 .confetti-piece:nth-child(8) {
-  left: 20%;
-  background: #2ecc71;
+  left: 10%;
+  --burst-x: 20px;
+  --burst-y: -220px;
+  --burst-r: 400deg;
+  background: #f368e0;
+  animation-delay: 0.1s;
+  width: 12px;
+  height: 6px;
+  border-radius: 3px;
+}
+
+/* Bottom-right burst pieces */
+.confetti-piece:nth-child(9) {
+  left: 88%;
+  --burst-x: 60px;
+  --burst-y: -300px;
+  --burst-r: -540deg;
+  background: #ff6b6b;
+  animation-delay: 0.03s;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+}
+
+.confetti-piece:nth-child(10) {
+  left: 92%;
+  --burst-x: -40px;
+  --burst-y: -260px;
+  --burst-r: -420deg;
+  background: #feca57;
+  animation-delay: 0.1s;
+  width: 9px;
+  height: 12px;
+}
+
+.confetti-piece:nth-child(11) {
+  left: 96%;
+  --burst-x: -100px;
+  --burst-y: -190px;
+  --burst-r: -360deg;
+  background: #48dbfb;
+  animation-delay: 0.18s;
+  width: 15px;
+  height: 7px;
+  border-radius: 4px;
+}
+
+.confetti-piece:nth-child(12) {
+  left: 84%;
+  --burst-x: 100px;
+  --burst-y: -340px;
+  --burst-r: -600deg;
+  background: #ff9ff3;
+  animation-delay: 0.07s;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.confetti-piece:nth-child(13) {
+  left: 98%;
+  --burst-x: -50px;
+  --burst-y: -240px;
+  --burst-r: -480deg;
+  background: #54a0ff;
+  animation-delay: 0.22s;
+  width: 7px;
+  height: 13px;
+  border-radius: 3px;
+}
+
+.confetti-piece:nth-child(14) {
+  left: 80%;
+  --burst-x: 120px;
+  --burst-y: -170px;
+  --burst-r: -300deg;
+  background: #5f27cd;
+  animation-delay: 0.14s;
+  width: 13px;
+  height: 9px;
+}
+
+.confetti-piece:nth-child(15) {
+  left: 94%;
+  --burst-x: -30px;
+  --burst-y: -370px;
+  --burst-r: -720deg;
+  background: #01a3a4;
+  animation-delay: 0.28s;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.confetti-piece:nth-child(16) {
+  left: 86%;
+  --burst-x: 30px;
+  --burst-y: -210px;
+  --burst-r: -400deg;
+  background: #f368e0;
   animation-delay: 0.12s;
+  width: 11px;
+  height: 7px;
+  border-radius: 3px;
 }
